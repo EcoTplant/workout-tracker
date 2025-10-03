@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const exercisesController = require('../../controllers/exercises.controller');
 
-// Middleware para inyectar datos de ejemplo
 router.use((req, res, next) => {
   req.exercises = [
     {
@@ -30,9 +29,10 @@ router.use((req, res, next) => {
   next();
 });
 
-// Endpoints básicos (sin implementación aún)
-router.get('/');
-router.get('/:id');
+// Rutas GET implementadas
+router.get('/', exercisesController.getAllExercises);
+router.get('/:id', exercisesController.getExerciseById);
+
 router.post('/');
 router.put('/:id');
 router.patch('/:id');
