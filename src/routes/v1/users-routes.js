@@ -11,12 +11,12 @@ let users = [
   }
 ];
 
-// GET /users (lista)
+// GET /users
 router.get('/', (req, res) => {
   res.status(200).json(users);
 });
 
-// GET /users/:id (individual)
+// GET /users/:id
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   const user = users.find(u => u.id === id);
@@ -26,6 +26,23 @@ router.get('/:id', (req, res) => {
   }
 
   res.status(200).json(user);
+});
+
+// POST /users
+router.post('/', (req, res) => {
+  const { name, email, role } = req.body;
+
+  const newUser = {
+    id: `${Date.now()}`,
+    name,
+    email,
+    role: role || 'user',
+    createdAt: new Date().toISOString()
+  };
+
+  users.push(newUser);
+
+  res.status(201).json(newUser);
 });
 
 module.exports = router;
