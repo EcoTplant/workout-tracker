@@ -15,11 +15,13 @@ router.use((req, res, next) => {
 router.get('/', exercisesController.getAllExercises);
 router.get('/:id', exercisesController.getExerciseById);
 
-// POST implementado
+// POST
 router.post('/', exercisesController.createExercise);
 
-router.put('/:id');
-router.patch('/:id');
+// PUT y PATCH implementados
+router.put('/:id', exercisesController.updateExercise);
+router.patch('/:id', exercisesController.patchExercise);
+
 router.delete('/:id');
 
 module.exports = router;
