@@ -11,9 +11,24 @@ let users = [
   }
 ];
 
-// GET /users
+// GET /users?role=user&search=Carlos
 router.get('/', (req, res) => {
-  res.status(200).json(users);
+  const { role, search } = req.query;
+  let result = users;
+
+  if (role) {
+    result = result.filter(u =>
+      u.role && u.role.toLowerCase() === role.toLowerCase()
+    );
+  }
+
+  if (search) {
+    result = result.filter(u =>
+      u.name && u.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  res.status(200).json(result);
 });
 
 // GET /users/:id
@@ -31,6 +46,10 @@ router.get('/:id', (req, res) => {
 // POST /users
 router.post('/', (req, res) => {
   const { name, email, role } = req.body;
+
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name y email son requeridos' });
+  }
 
   const newUser = {
     id: `${Date.now()}`,
@@ -53,6 +72,10 @@ router.put('/:id', (req, res) => {
   const index = users.findIndex(u => u.id === id);
   if (index === -1) {
     return res.status(404).json({ error: 'Usuario no encontrado' });
+  }
+
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name y email son requeridos' });
   }
 
   users[index] = { ...users[index], name, email, role };
