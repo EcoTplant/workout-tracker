@@ -3,8 +3,7 @@ const workoutPlanController = {
   getAllWorkouts: (req, res) => {
     res.status(200).json(req.workouts);
   },
-  
-  
+
   // GET /workouts/:id
   getWorkoutById: (req, res) => {
     const { id } = req.params;
