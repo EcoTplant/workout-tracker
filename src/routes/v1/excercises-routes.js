@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const exercisesController = require('../../controllers/exercises.controller');
+const exercisesController = require('../../controllers/exercises-controller');
 
 router.use((req, res, next) => {
   req.exercises = [
