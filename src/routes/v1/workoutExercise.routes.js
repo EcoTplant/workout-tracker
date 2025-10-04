@@ -39,5 +39,4 @@ router.put('/:id', workoutExerciseController.updateWorkoutExercise);
 router.patch('/:id', workoutExerciseController.patchWorkoutExercise);
 router.delete('/:id', workoutExerciseController.deleteWorkoutExercise);
 
-
 module.exports = router;
