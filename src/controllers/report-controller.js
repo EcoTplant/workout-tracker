@@ -58,5 +58,4 @@ const reportController = {
   }
 };
 
-
 module.exports = reportController;
