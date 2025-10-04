@@ -75,6 +75,7 @@ const workoutHorarioController = {
       return res.status(404).json({ error: 'Horario no encontrado' });
     }
 
+    
     const deletedHorario = req.workoutHorarios.splice(index, 1);
     res.status(200).json({ deleted: deletedHorario[0].id });
   }
