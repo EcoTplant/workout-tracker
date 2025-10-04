@@ -80,5 +80,4 @@ const workoutHorarioController = {
   }
 };
 
-
 module.exports = workoutHorarioController;
