@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const workoutPlanController = require('../../controllers/workoutPlan.controller');
+const workoutPlanController = require('../../controllers/workoutPlan-controller');
 
 router.use((req, res, next) => {
   req.workouts = [
